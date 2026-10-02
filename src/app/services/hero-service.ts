@@ -18,7 +18,7 @@ export class HeroService {
             }, 3000); 
         });
         
-        this.messageService.add('HeroService: fetched heroes');
+        this.messageService.add('Héros récupérés avec succès');
 
         return heroes;
     }

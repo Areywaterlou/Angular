@@ -1,7 +1,8 @@
-import { Component, input, linkedSignal, output } from '@angular/core';
+import { Component, input, linkedSignal, output, inject } from '@angular/core';
 import { HeroInterface } from '../../data/heroInterface';
 import { HeroDetailComponent } from '../hero-details-component/hero-detail-component';
 import { form, FormField } from '@angular/forms/signals';
+import { MessageService } from '../../services/message-service';
 
 @Component({
   selector: 'app-hero-edit-component',
@@ -18,7 +19,11 @@ export class HeroEditComponent {
 
   heroChange = output<HeroInterface>();
 
+  private messageService = inject(MessageService);
+
   save() {
-    this.heroChange.emit(this.heroModel());
+    const updatedHero = this.heroModel();
+    this.messageService.add(`Modification : Héros "${updatedHero.name}" mis à jour avec succès.`);
+    this.heroChange.emit(updatedHero);
   }
 }

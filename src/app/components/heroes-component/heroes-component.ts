@@ -1,11 +1,11 @@
 import { HeroInterface } from "../../data/heroInterface";
 import { UpperCasePipe } from '@angular/common';
-import { Component, inject, computed, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormField } from '@angular/forms/signals';
-import { HEROES } from '../../data/mock-heroes';
 import { HeroEditComponent } from '../hero-edit-component/hero-edit-component';
 import { HeroDetailComponent } from '../hero-details-component/hero-detail-component';
 import { HeroService } from '../../services/hero-service';
+import { MessageService } from '../../services/message-service';
 
 @Component({
   imports: [FormField, UpperCasePipe, HeroEditComponent, HeroDetailComponent],
@@ -15,6 +15,8 @@ import { HeroService } from '../../services/hero-service';
 })
 export class HeroesComponent {
   private heroService = inject(HeroService);
+  private messageService = inject(MessageService);
+  
   title = 'Mon Titre de Héros';
 
   heroesModel = signal<HeroInterface[]>([]);
@@ -22,6 +24,7 @@ export class HeroesComponent {
 
   onSelect(hero: HeroInterface): void {
     this.selectedHeroModel.set(hero);
+    this.messageService.add(`Sélection : Héros "${hero.name}" (ID: ${hero.id})`);
     console.log(this.selectedHeroModel());
   }
   
@@ -33,11 +36,8 @@ export class HeroesComponent {
   }
 
   ngOnInit() {
-        this.heroService.getHeroes().subscribe((heroes) => {
-            this.heroesModel.set(heroes);
-      }
-    );
+    this.heroService.getHeroes().subscribe((heroes) => {
+      this.heroesModel.set(heroes);
+    });
   }
-
-  
 }
