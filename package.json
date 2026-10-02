@@ -1,10 +1,12 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "reymonar-ToH2026",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ng serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true
+  
 }
