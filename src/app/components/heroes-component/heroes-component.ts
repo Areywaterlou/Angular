@@ -33,6 +33,11 @@ export class HeroesComponent {
   }
 
   ngOnInit() {
-        this.heroesModel.set(this.heroService.getHeroes());
-    } 
+        this.heroService.getHeroes().subscribe((heroes) => {
+            this.heroesModel.set(heroes);
+      }
+    );
+  }
+
+  
 }
