@@ -1,0 +1,11 @@
+@if (selectedHeroModel(); as hero) {
+  <app-hero-detail-component [hero]="hero"></app-hero-detail-component>
+} @else {
+  <p>Aucun héros sélectionné</p>
+}
+
+<div><b>Détails de {{ hero().name }}</b></div>
+<div>id: {{ hero().id }}</div>
+<div>name: {{ hero().name }}</div>
+<div>actif: {{ hero().actif ? "&check;" : "&#10007;" }}</div>
+  
