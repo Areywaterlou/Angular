@@ -10,60 +10,15 @@
         <span>{{hero.id}}</span>&nbsp;
         <span>{{hero.name}}</span>&nbsp;
         <span>{{ hero.actif ? "&check;" : "&#10007;" }}</span>
-        
-    </button>
+      </button>
     </li>
   }
 </ul>
-@if (selectedHeroModel(); as hero) {
-    <div><b>Détails de {{ hero.name }}</b></div>
-    <div>id: {{ hero.id }}</div>
-    <div>name: {{ hero.name }}</div>
-    <div>actif: {{ hero.actif ? "&check;" : "&#10007;" }}</div>
-    <app-hero-edit-component [hero]="hero" (heroChange)="onHeroChange($event)"></app-hero-edit-component>
 
+@if (selectedHeroModel(); as hero) {
+    <!-- 1. Affichage propre des détails via le composant dédié -->
+    <app-hero-detail-component [hero]="hero"></app-hero-detail-component>
+    <app-hero-edit-component [hero]="hero" (heroChange)="onHeroChange($event)"></app-hero-edit-component>
 } @else {
     <p>Aucun héros sélectionné</p>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div><b>Détails de {{ hero.name }}</b></div>
-<div>id: {{ hero.id }}</div>
-<div>name: {{ hero.name }}</div>
-<div>actif: {{ hero.actif ? "✓" : "✗" }}</div>
-
-
-<div><b>Détails de {{ heroModel().name | uppercase }}</b></div>
-<div>id: {{ heroModel().id }}</div>
-<div>name: {{ heroModel().name }}</div>
-<div>actif: {{ heroModel().actif ? "✓" : "✗" }}</div>
-
-<div><b>Détails de {{ heroNameModelCapitalized() }}</b></div>
-<div>id: {{ heroModel().id }}</div>
-<div>name: {{ heroModel().name }}</div>
-<div>actif: {{ heroModel().actif ? "✓" : "✗" }}</div>
-
-
-<div>
-  <input [value]="heroModel().name" (input)="changerHeroName($any($event.target).value)">
-  <button (click)="changerHeroActif()">Changer le actif</button>
-</div>
-
-<div>
-    <input type="text" [formField]="heroForm.name" />
-    <input type="checkbox" [formField]="heroForm.actif" /> 
-</div>-->
