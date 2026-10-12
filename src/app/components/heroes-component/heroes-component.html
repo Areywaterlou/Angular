@@ -1,7 +1,5 @@
 <h1>{{ title }}</h1>
 
-<h2>Étape 2 : liste de héros</h2>
-
 <ul class="heroes">
   @for (hero of heroesModel(); track hero.id) {
     <li>
@@ -16,7 +14,6 @@
 </ul>
 
 @if (selectedHeroModel(); as hero) {
-    <!-- 1. Affichage propre des détails via le composant dédié -->
     <app-hero-detail-component [hero]="hero"></app-hero-detail-component>
     <app-hero-edit-component [hero]="hero" (heroChange)="onHeroChange($event)"></app-hero-edit-component>
 } @else {

@@ -24,7 +24,7 @@ export class HeroesComponent {
 
   onSelect(hero: HeroInterface): void {
     this.selectedHeroModel.set(hero);
-    this.messageService.add(`Sélection : Héros "${hero.name}" (ID: ${hero.id})`);
+    this.messageService.add(`Sélection : Héros "${hero.name}"`);
     console.log(this.selectedHeroModel());
   }
   
