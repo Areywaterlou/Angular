@@ -15,7 +15,7 @@ export class HeroService {
             setTimeout(() => {
                 observer.next(HEROES);
                 observer.complete();
-            }, 3000); 
+            }); 
         });
         
         this.messageService.add('Héros récupérés avec succès');
